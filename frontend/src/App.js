@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { ButtonComponent } from './components/atoms/button/button.jsx';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         >
           Learn React
         </a>
+        <ButtonComponent color='error'/>
       </header>
     </div>
   );
