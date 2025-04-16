@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+svg:not(:root) {
+  overflow: scroll !important;
+  display: inline-block !important;
+}
+
+#svg-pan-zoom-controls {
+  display: contents;
+}
+
+.mermaid {
+  height: 1000px;
+}

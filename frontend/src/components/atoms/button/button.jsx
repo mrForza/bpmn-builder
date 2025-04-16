@@ -17,7 +17,7 @@ export const setPropsItem = (name, propsItem) => {
         DEFAULT_PROPS.get(name) : propsItem
 }
 
-export const ButtonComponent = ({style, href, variant, clickHandler, color, text, endIcon}) => {
+export const ButtonComponent = ({style, href, variant, clickHandler, color, text, endIcon, enable, download}) => {
     return (
         <Button
             sx={setPropsItem('style', style)}
@@ -26,7 +26,9 @@ export const ButtonComponent = ({style, href, variant, clickHandler, color, text
             onClick={setPropsItem('clickHandler', clickHandler)}
             endIcon={setPropsItem('endIcon', endIcon)}
             color={setPropsItem('color', color)}
-            size='small'>
+            size='small'
+            disabled={!enable}
+            download={download}>
             {setPropsItem('text', text)}
         </Button>
     )

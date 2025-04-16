@@ -3,10 +3,12 @@ import { HeaderComponent } from '../../organisms/header/header.jsx'
 import { FooterComponent } from '../../organisms/footer/footer.jsx'
 import { VoiceTextSectionComponent } from '../../organisms/voiceTextSection/voiceTextSection.jsx'
 import { WarningsSectionComponent } from '../../organisms/warningsSection/warningsSection.jsx'
-import { DiagramSectionComponent } from '../../organisms/diagramSection/diagramSection.jsx'
+import DiagramSectionComponent from '../../organisms/diagramSection/diagramSection.jsx'
+import { useSelector } from 'react-redux';
 
 
 export const MainPage = () => {
+    const diagramm = useSelector((state) => state.diagramm.value);
     
     return (
         <Stack spacing={2}>
@@ -15,7 +17,7 @@ export const MainPage = () => {
                 <VoiceTextSectionComponent/>
                 <WarningsSectionComponent/>
             </Stack>
-            <DiagramSectionComponent/>
+            <DiagramSectionComponent chart={diagramm}/>
             <FooterComponent/>
         </Stack>
     );

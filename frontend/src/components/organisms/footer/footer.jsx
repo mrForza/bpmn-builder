@@ -12,6 +12,9 @@ export const FooterComponent = ({}) => {
                 backgroundColor: (theme) =>
                     theme.palette.mode === 'light' ? '#f5f5f5' : '#1a1a1a',
                 textAlign: 'center',
+                position: 'fixed',
+                bottom: 0,
+                width: '100%'
             }}
         >
             <Container maxWidth="md">

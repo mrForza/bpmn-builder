@@ -1,14 +1,15 @@
 import Stack from '@mui/material/Stack';
 import { TextFieldComponent } from '../../atoms/textField/textField.jsx'
-import { ButtonComponent } from '../../atoms/button/button.jsx'
-import { ButtonsGroupComponent } from '../../molecules/buttonsGroup/buttonsGroup.jsx'
 import { VoiceRecorder } from '../../molecules/voiceRecorder/voiceRecorder.jsx'
+import { useSelector } from 'react-redux';
 
 export const VoiceTextSectionComponent = ({}) => {
+    const voiceText = useSelector((state) => state.voiceText.value)
+
     return (
         <Stack sx={{width: '45%'}} spacing={2}>
             <TextFieldComponent
-                label='Текст для генерации BPMN диаграммы'
+                label={voiceText === '' ? 'Текст для генерации BPMN диаграммы' : voiceText}
                 defaultValue=''
                 rows={4}
                 cols={22}
@@ -18,12 +19,6 @@ export const VoiceTextSectionComponent = ({}) => {
                 size='medium'
             />
             <VoiceRecorder/>
-            <ButtonsGroupComponent buttons={[
-                <ButtonComponent color='success' text='Запись' style={{marginLeft: '10px'}}/>,
-                <ButtonComponent color='success' text='Стоп' style={{marginLeft: '10px'}}/>,
-                <ButtonComponent color='success' text='Скачать' style={{marginLeft: '10px'}}/>,
-                <ButtonComponent color='success' text='Сгенерировать текст' style={{marginLeft: '10px'}}/>,
-            ]}/>
         </Stack>
     );
 }
