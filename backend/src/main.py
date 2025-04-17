@@ -1,12 +1,6 @@
-from fastapi import FastAPI
+import asyncio
+from presentation.api.main import run_api
 
 
-app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"message": "Hello, World!"}
-
-@app.get("/users/{user_id}")
-def read_user(user_id: int, q: str = None):
-    return {"user_id": user_id, "q": q}
+if __name__ == '__main__':
+    asyncio.run(run_api)
