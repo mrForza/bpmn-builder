@@ -1,9 +1,7 @@
 import whisper
 
 
-# загрузка модели.
-# лучше использовать как минимум 'small'
 model = whisper.load_model("tiny")
-result = model.transcribe("audioo.mp3")
+result = model.transcribe("audioo.mp3", fp16=False)
 print(result["text"])
 
