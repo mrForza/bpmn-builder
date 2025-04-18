@@ -1,4 +1,7 @@
-fastapi==0.115.12 
-uvicorn==0.34.1
+fastapi==0.109.2  # Рабочая версия для Python 3.11
+uvicorn==0.27.0
 openai-whisper==20240930
 ffmpeg-python==0.2.0
+torch==2.2.1+cpu --index-url https://download.pytorch.org/whl/cpu
+torchaudio==2.2.1+cpu --index-url https://download.pytorch.org/whl/cpu
+numpy==1.24.4

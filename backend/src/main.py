@@ -1,6 +1,7 @@
-import asyncio
 from presentation.api.main import run_api
 
+app = run_api()
 
 if __name__ == '__main__':
-    asyncio.run(run_api)
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
