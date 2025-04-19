@@ -1,11 +1,16 @@
 from fastapi import FastAPI, Depends
 from typing import Annotated
 
-from src.infrastructure.database.repositories.voice import PostgresVoiceRepository
+from src.infrastructure.database.repositories.voice import (
+    PostgresVoiceRepository,
+)
 from src.infrastructure.object_storage.repositories.voice import (
     MinioVoiceRepository,
 )
-from src.domain.usecases.voice_usecase import VoiceService, VoiceToTextTransformer
+from src.domain.usecases.voice_usecase import (
+    VoiceService,
+    VoiceToTextTransformer,
+)
 from src.domain.interfaces.repositories.voice_repositories import (
     VoiceStorageRepository,
     VoiceDatabaseRepository,
