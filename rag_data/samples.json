@@ -1,0 +1,56 @@
+[
+    {
+        "text": "Сценарий: Начало — День рождения. Затем покупка подарка. Выбор между тортом и книгой.",
+        "json": {
+            "nodes": [
+                {"id": "A", "type": "StartEvent", "label": "День рождения"},
+                {"id": "B", "type": "Process", "label": "Покупка подарка"},
+                {"id": "C", "type": "Decision", "label": "Выбор"},
+                {"id": "D", "type": "EndEvent", "label": "Торт"},
+                {"id": "E", "type": "EndEvent", "label": "Книга"}
+            ],
+            "edges": [
+                {"from": "A", "to": "B", "label": "", "type": "-->"},
+                {"from": "B", "to": "C", "label": "", "type": "-->"},
+                {"from": "C", "to": "D", "label": "Сладкое", "type": "-->"},
+                {"from": "C", "to": "E", "label": "Полезное", "type": "-->"}
+            ]
+        }
+    },
+    {
+        "text": "Начало процесса — Утро. Далее — Завтрак. Затем выбор между Кашей и Бутербродом.",
+        "json": {
+            "nodes": [
+                {"id": "A", "type": "StartEvent", "label": "Утро"},
+                {"id": "B", "type": "Process", "label": "Завтрак"},
+                {"id": "C", "type": "Decision", "label": "Что съесть?"},
+                {"id": "D", "type": "EndEvent", "label": "Каша"},
+                {"id": "E", "type": "EndEvent", "label": "Бутерброд"}
+            ],
+            "edges": [
+                {"from": "A", "to": "B", "label": "", "type": "-->"},
+                {"from": "B", "to": "C", "label": "", "type": "-->"},
+                {"from": "C", "to": "D", "label": "Полезно", "type": "-->"},
+                {"from": "C", "to": "E", "label": "Быстро", "type": "-->"}
+            ]
+        }
+    },
+    {
+        "text": "Сценарий начинается с события 'Собрание'. Затем процесс 'Обсуждение задач'. Далее выбор: 'Согласование' или 'Отложить'.",
+        "json": {
+            "nodes": [
+                {"id": "A", "type": "StartEvent", "label": "Собрание"},
+                {"id": "B", "type": "Process", "label": "Обсуждение задач"},
+                {"id": "C", "type": "Decision", "label": "Что дальше?"},
+                {"id": "D", "type": "EndEvent", "label": "Согласование"},
+                {"id": "E", "type": "EndEvent", "label": "Отложить"}
+            ],
+            "edges": [
+                {"from": "A", "to": "B", "label": "", "type": "-->"},
+                {"from": "B", "to": "C", "label": "", "type": "-->"},
+                {"from": "C", "to": "D", "label": "Готово", "type": "-->"},
+                {"from": "C", "to": "E", "label": "Не готово", "type": "-->"}
+            ]
+        }
+    }
+]
