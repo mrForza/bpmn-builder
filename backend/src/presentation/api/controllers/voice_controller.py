@@ -1,7 +1,8 @@
 from fastapi import APIRouter, UploadFile, Depends
-from presentation.api.providers.main import get_voice_service
 from typing import Annotated
-from domain.usecases.voice_usecase import VoiceService
+
+from src.presentation.api.providers.main import get_voice_service
+from src.domain.usecases.voice_usecase import VoiceService
 
 
 voice_router = APIRouter(prefix="/voice", tags=["voice"])

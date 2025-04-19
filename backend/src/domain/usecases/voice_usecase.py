@@ -1,4 +1,4 @@
-from domain.interfaces.repositories.voice_repositories import (
+from src.domain.interfaces.repositories.voice_repositories import (
     VoiceStorageRepository,
     VoiceDatabaseRepository,
 )

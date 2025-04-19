@@ -1,15 +1,15 @@
-from fastapi import FastAPI
-from infrastructure.database.repositories.voice import PostgresVoiceRepository
-from infrastructure.object_storage.repositories.voice import (
+from fastapi import FastAPI, Depends
+from typing import Annotated
+
+from src.infrastructure.database.repositories.voice import PostgresVoiceRepository
+from src.infrastructure.object_storage.repositories.voice import (
     MinioVoiceRepository,
 )
-from domain.usecases.voice_usecase import VoiceService, VoiceToTextTransformer
-from domain.interfaces.repositories.voice_repositories import (
+from src.domain.usecases.voice_usecase import VoiceService, VoiceToTextTransformer
+from src.domain.interfaces.repositories.voice_repositories import (
     VoiceStorageRepository,
     VoiceDatabaseRepository,
 )
-from typing import Annotated
-from fastapi import Depends
 
 
 def get_postgres_voice_repo() -> PostgresVoiceRepository:

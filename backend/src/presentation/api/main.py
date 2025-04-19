@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from presentation.api.controllers.main import setup_controllers
-from presentation.api.providers.main import setup_providers
-from presentation.api.middlewares.main import setup_middlewares
+
+from src.presentation.api.controllers.main import setup_controllers
+from src.presentation.api.providers.main import setup_providers
+from src.presentation.api.middlewares.main import setup_middlewares
 
 
 def init_api():
