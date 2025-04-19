@@ -4,13 +4,30 @@ import { ButtonsGroupComponent } from '../../molecules/buttonsGroup/buttonsGroup
 import { Stack } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { addDiagramm } from '../../../store/diagrammSlice.js';
+import { uploadAudioFile } from '../../../api/voiceTextApi.js';
 
-const d = `
-sequenceDiagram
-  participant Alice
-  participant Bob
-  Alice->>Bob: Hello Bob, how are you?
-  Bob-->>Alice: I am good thanks!
+const diagramm = `
+graph TB
+    sq[Square shape] --> ci((Circle shape))
+
+    subgraph A
+        od>Odd shape]-- Two line<br/>edge comment --> ro
+        di{Diamond with <br/> line break} -.-> ro(Rounded<br>square<br>shape)
+        di==>ro2(Rounded square shape)
+    end
+
+    %% Notice that no text in shape are added here instead that is appended further down
+    e --> od3>Really long text with linebreak<br>in an Odd shape]
+
+    %% Comments after double percent signs
+    e((Inner / circle<br>and some odd <br>special characters)) --> f(,.?!+-*ز)
+
+    cyr[Cyrillic]-->cyr2((Circle shape Начало));
+
+     classDef green fill:#9f6,stroke:#333,stroke-width:2px;
+     classDef orange fill:#f96,stroke:#333,stroke-width:4px;
+     class sq,e green
+     class di orange
 `
 
 export const VoiceRecorder = () => {
@@ -86,6 +103,7 @@ export const VoiceRecorder = () => {
                         setDownloadEnable(true)
                         setGenerateEnable(true)
                         stopRecording()
+                        console.log(mediaRecorderRef)
                     }}
                 />,
                 <ButtonComponent
@@ -101,8 +119,9 @@ export const VoiceRecorder = () => {
                     text='Сгенерировать текст'
                     style={{marginLeft: '10px'}}
                     enable={generateEnable}
-                    clickHandler={() => {
-                        dispatcher(addDiagramm(d))
+                    clickHandler={async () => {
+                        dispatcher(addDiagramm(diagramm))
+                        console.log('!!!', await uploadAudioFile(audioChunksRef))
                     }}
                 />,
             ]}/>

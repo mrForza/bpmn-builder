@@ -1,11 +1,20 @@
 import axios from 'axios'
 
-export const sendVoiceFile = async (audioFile) => {
+export const uploadAudioFile = async (audioFile) => {
     try {
-        const response = await axios.post('http://localhost:8080/voice', {audio: audioFile});
-        return response;
+        const file = new File([audioFile], 'test.mp3')
+        return await axios.post(
+            'http://localhost:8080/voice',
+            {audio_file: file},
+            {
+                headers: {
+                    'Content-Type': `multipart/form-data`,
+                },
+            }
+        );
     } catch (err) {
         console.log(err)
+        return ''
     }
 }
 

@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   backend:
     build:
@@ -12,7 +10,7 @@ services:
       - ./backend:/app
     depends_on:
       - db
-      - redis
+      - object_storage
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
       - REDIS_URL=redis://redis:6379
@@ -44,12 +42,19 @@ services:
       - "5432:5432"
     restart: always
 
-  redis:
-    image: redis:7
-    container_name: cache
+  object_storage:
+    image: minio/minio:latest
+    container_name: minio
     ports:
-      - "6379:6379"
-    restart: always
+      - "9000:9000" # API
+      - "9001:9001" # Web UI
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - minio-data:/data
+    command: server --console-address ":9001" /data
 
 volumes:
   pg_data:
+  minio-data:

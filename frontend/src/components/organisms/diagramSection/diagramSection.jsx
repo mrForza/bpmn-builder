@@ -74,7 +74,6 @@ export default class DiagramSectionComponent extends React.Component {
             </div>)
         }
 
-        console.log(this.props.chart)
         return (
             <div style={styles} id="mermaid-chart" className="mermaid">
                 {this.state.mermaidError ?
