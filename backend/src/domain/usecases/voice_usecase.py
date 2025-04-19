@@ -1,4 +1,7 @@
-from domain.interfaces.repositories.voice_repositories import VoiceStorageRepository, VoiceDatabaseRepository
+from domain.interfaces.repositories.voice_repositories import (
+    VoiceStorageRepository,
+    VoiceDatabaseRepository,
+)
 
 
 class VoiceToTextTransformer:
@@ -10,7 +13,7 @@ class VoiceService:
         self,
         db_repo: VoiceDatabaseRepository,
         storage_repo: VoiceStorageRepository,
-        voice_transformer: VoiceToTextTransformer
+        voice_transformer: VoiceToTextTransformer,
     ):
         self.db_repo = db_repo
         self.storage_repo = storage_repo
@@ -20,5 +23,5 @@ class VoiceService:
         await self.storage_repo.save_file(audio_file)
         # await self.db_repo.save_file()
 
-    async def convert_to_text(self, audio_file) -> str:
+    async def convert_to_text(self, audio_file) -> str:  # type: ignore[empty-body]
         pass
