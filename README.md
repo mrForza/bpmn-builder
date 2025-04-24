@@ -30,5 +30,5 @@ make test
 ```
 or
 ```shell
-pytest -s ./tests
+pytest -s ./tests/**
 ```
