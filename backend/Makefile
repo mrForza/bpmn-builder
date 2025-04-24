@@ -26,4 +26,4 @@ test-coverage:
 		-s ./tests/**
 
 run:
-	uv run uvicorn src.main:app --host 0.0.0.0 --port 8000
+	uv run uvicorn src.main:app --host 0.0.0.0 --port 8080

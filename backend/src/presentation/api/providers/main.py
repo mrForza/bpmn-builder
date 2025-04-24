@@ -30,15 +30,9 @@ def get_voice_to_text_transformer() -> VoiceToTextTransformer:
 
 
 def get_voice_service(
-    db_repo: Annotated[
-        VoiceDatabaseRepository, Depends(get_postgres_voice_repo)
-    ],
-    storage_repo: Annotated[
-        VoiceStorageRepository, Depends(get_minio_voice_repo)
-    ],
-    transformer: Annotated[
-        VoiceToTextTransformer, Depends(VoiceToTextTransformer)
-    ],
+    db_repo: Annotated[VoiceDatabaseRepository, Depends(get_postgres_voice_repo)],
+    storage_repo: Annotated[VoiceStorageRepository, Depends(get_minio_voice_repo)],
+    transformer: Annotated[VoiceToTextTransformer, Depends(VoiceToTextTransformer)],
 ) -> VoiceService:
     return VoiceService(
         db_repo=db_repo,
