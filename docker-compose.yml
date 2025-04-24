@@ -5,15 +5,15 @@ services:
       dockerfile: Dockerfile
     container_name: backend
     ports:
-      - "8000:8000"
+      - "8080:8080"
     volumes:
       - ./backend:/app
-    depends_on:
-      - db
-      - object_storage
-    environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
-      - REDIS_URL=redis://redis:6379
+    # depends_on:
+    #   - db
+    #   - object_storage
+    # environment:
+    #   - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
+    #   - REDIS_URL=redis://redis:6379
     restart: always
 
   frontend:
@@ -29,32 +29,32 @@ services:
       - backend
     restart: always
 
-  db:
-    image: postgres:15
-    container_name: database
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
-    volumes:
-      - pg_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-    restart: always
+  # db:
+  #   image: postgres:15
+  #   container_name: database
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
+  #     POSTGRES_DB: postgres
+  #   volumes:
+  #     - pg_data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+  #   restart: always
 
-  object_storage:
-    image: minio/minio:latest
-    container_name: minio
-    ports:
-      - "9000:9000" # API
-      - "9001:9001" # Web UI
-    environment:
-      MINIO_ROOT_USER: minioadmin
-      MINIO_ROOT_PASSWORD: minioadmin
-    volumes:
-      - minio-data:/data
-    command: server --console-address ":9001" /data
+  # object_storage:
+  #   image: minio/minio:latest
+  #   container_name: minio
+  #   ports:
+  #     - "9000:9000" # API
+  #     - "9001:9001" # Web UI
+  #   environment:
+  #     MINIO_ROOT_USER: minioadmin
+  #     MINIO_ROOT_PASSWORD: minioadmin
+  #   volumes:
+  #     - minio-data:/data
+  #   command: server --console-address ":9001" /data
 
-volumes:
-  pg_data:
-  minio-data:
+# volumes:
+#   pg_data:
+#   minio-data:
