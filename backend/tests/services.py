@@ -20,4 +20,4 @@ async def test_generate_bpmn():
 def test_transcribe_audio():
     speech_recognition = SpeechRecognitionService()
     transcription = speech_recognition.transcribe("src/audioo.mp3")
-    print(transcription)
+    assert any([word in transcription for word in ["Москва", "москва"]])

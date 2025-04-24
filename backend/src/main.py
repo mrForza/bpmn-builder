@@ -1,7 +1,23 @@
 import asyncio
-from src.presentation.api.main import run_api, init_api
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 
-app = init_api()
+from src.routes.main import main_router
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+app.include_router(main_router)
 
 if __name__ == "__main__":
-    asyncio.run(run_api())
+    config = uvicorn.Config(app, host="localhost", port=8080)
+    server = uvicorn.Server(config)
+
+    asyncio.run(server.serve())
