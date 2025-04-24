@@ -26,7 +26,7 @@ def init_api():
 
 async def run_api():
     app = init_api()
-    config = uvicorn.Config(app, host="localhost", port=8080)
+    config = uvicorn.Config(app, host="localhost", port=8000)
     server = uvicorn.Server(config)
 
     await server.serve()

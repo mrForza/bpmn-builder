@@ -17,7 +17,7 @@ app.add_middleware(
 app.include_router(main_router)
 
 if __name__ == "__main__":
-    config = uvicorn.Config(app, host="localhost", port=8080)
+    config = uvicorn.Config(app, host="localhost", port=8000)
     server = uvicorn.Server(config)
 
     asyncio.run(server.serve())

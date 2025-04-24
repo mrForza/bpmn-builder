@@ -4,7 +4,7 @@ export const uploadAudioFile = async (audioFile) => {
     try {
         const file = new File([audioFile], 'test.mp3')
         return await axios.post(
-            'http://localhost:8080/voice',
+            'http://localhost:8000/voice',
             {audio_file: file},
             {
                 headers: {
@@ -20,7 +20,7 @@ export const uploadAudioFile = async (audioFile) => {
 
 export const getVoiceText = async () => {
     try {
-        const response = await axios.post('http://localhost:8080/text');
+        const response = await axios.post('http://localhost:8000/text');
         return response;
     } catch (err) {
         console.log(err)
